@@ -52,7 +52,12 @@ protected:
 #else
 
 //for C, define a simple opaque structure
-typedef struct s_ScopeTimer ScopeTimer;
+typedef struct s_ScopeTimer{
+
+    //for windows, add a single byte here to make the struct contain something
+    uint8_t byte;
+
+} ScopeTimer;
 
 #endif
 

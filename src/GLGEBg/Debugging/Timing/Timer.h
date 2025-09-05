@@ -55,6 +55,11 @@ protected:
      */
     std::chrono::system_clock::time_point m_start = std::chrono::system_clock::now();
 
+    #else
+
+    //for windows, add a single byte here to make the struct contain something
+    uint8_t byte;
+
     #endif
 
 } Timer;

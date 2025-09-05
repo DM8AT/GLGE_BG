@@ -68,8 +68,11 @@ int main(void)
     Logger* log = logger_CreateAndOverload(false, beautyPrint);
 
     //get some information about the memory of the computer the program is running on
-    printf("=====================\nRAM info:\nTotal RAM size: %llu bytes\nUsed RAM: %llu bytes\nFree RAM: %llu bytes\nUsed by this process: %llu bytes\n=====================\n", 
-           glge_GetMaxMemoryCount(), glge_GetCurrentMemoryUsage(), glge_GetFreeMemory(), glge_GetOwnMemoryUsage());
+    printf("=====================\nRAM info:\nTotal RAM size: %lu bytes\nUsed RAM: %lu bytes\nFree RAM: %lu bytes\nUsed by this process: %lu bytes\n=====================\n", 
+           (long unsigned int)glge_GetMaxMemoryCount(), 
+           (long unsigned int)glge_GetCurrentMemoryUsage(), 
+           (long unsigned int)glge_GetFreeMemory(), 
+           (long unsigned int)glge_GetOwnMemoryUsage());
 
     //execute your very time critical code
     timeCriticalStuff(log);

@@ -59,6 +59,11 @@ typedef struct s_Mutex {
      */
     inline bool try_lock() {return mutex.try_lock();}
 
+    #else
+
+    //for windows, add a single byte here to make the struct contain something
+    uint8_t byte;
+
     #endif
 
     //for C, this is an opaque structure

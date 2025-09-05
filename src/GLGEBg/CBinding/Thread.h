@@ -78,6 +78,11 @@ typedef struct s_Thread {
      */
     static inline unsigned int hardware_concurrency() {return std::thread::hardware_concurrency();}
 
+    #else
+
+    //for windows, add a single byte here to make the struct contain something
+    uint8_t byte;
+
     #endif
 
 } Thread;
