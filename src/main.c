@@ -40,17 +40,6 @@ void timeCriticalStuff(Logger* logger)
         vector_Push_back(&i, vec);
     }
 
-    //log the transition
-    logger_log("Transitioning from adding elements to printing elements", logger);
-
-    //then, print everything
-    uint64_t el = vec->byteSize / vec->elementSize;
-    for (uint64_t i = 0; i < el; ++i)
-    {
-        //just print the element
-        printf("ID: %lu\n", *((uint16_t*)vector_Get(i, vec)));
-    }
-
     //make sure to clean up
     vector_Destroy(vec);
 
@@ -77,6 +66,10 @@ int main(void)
 {
     //create a new logger
     Logger* log = logger_CreateAndOverload(false, beautyPrint);
+
+    //get some information about the memory of the computer the program is running on
+    printf("=====================\nRAM info:\nTotal RAM size: %lu bytes\nUsed RAM: %lu bytes\nFree RAM: %lu bytes\nUsed by this process: %lu bytes\n=====================\n", 
+           glge_GetMaxMemoryCount(), glge_GetCurrentMemoryUsage(), glge_GetFreeMemory(), glge_GetOwnMemoryUsage());
 
     //execute your very time critical code
     timeCriticalStuff(log);

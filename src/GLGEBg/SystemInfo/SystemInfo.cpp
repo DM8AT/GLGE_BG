@@ -112,7 +112,7 @@ uint64_t glge_GetFreeMemory() {
     #endif
 }
 
-uint64_t glge_GetMemoryOwnUsage() {
+uint64_t glge_GetOwnMemoryUsage() {
     #if __linux
     return __linux_util_getProcElement("/proc/self/status", "VmSize", "VmSize: %lu");
     #elif defined(__WIN32__) || defined(_WIN32) || defined(__CYGWIN32__)

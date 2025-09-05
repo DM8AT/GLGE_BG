@@ -48,7 +48,7 @@ uint64_t glge_GetFreeMemory();
  * 
  * @return uint64_t the memory usage of the program in bytes
  */
-uint64_t glge_GetMemoryOwnUsage();
+uint64_t glge_GetOwnMemoryUsage();
 
 //the the extern section in C++
 #if __cplusplus
