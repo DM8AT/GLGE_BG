@@ -13,3 +13,10 @@ Currently implemented are:
 | Logger     | :white_check_mark:| 1.0.0         | 1.0.0          |
 | Timer      | :white_check_mark:| 1.0.0         | 1.0.0          |
 | Scope Timer| :white_check_mark:| 1.0.0         | 1.0.0          |
+
+# Compiling the library
+## Building the library
+To compile the library, simply go to the directory to compile to (`bin` in the example) and run cmake with the path to the root of the project (the folder you cloned to). Then, simply run `cmake --build` to build the project and library. 
+
+## Implementing the library into your CMake project
+To add the library to a CMake project, simply use the `add_subdirectory` command with the path to the library's directory. Them, link against the library target called `GLGE_BG` and compile your CMake project like normal. 
