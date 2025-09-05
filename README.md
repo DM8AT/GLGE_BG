@@ -20,3 +20,6 @@ To compile the library, simply go to the directory to compile to (`bin` in the e
 
 ## Implementing the library into your CMake project
 To add the library to a CMake project, simply use the `add_subdirectory` command with the path to the library's directory. Them, link against the library target called `GLGE_BG` and compile your CMake project like normal. 
+
+# Current OS support
+The library contains some operating dependant code. Currently, it is tested under linux (debian based system) and Windows. For MacOS, there is currently no implementation available. 
