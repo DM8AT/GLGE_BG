@@ -15,6 +15,7 @@ Currently implemented are:
 | Scope Timer| :white_check_mark:| 1.0.0         | 1.0.0          |
 
 # Compiling the library
+[![CMake on multiple platforms](https://github.com/DM8AT/GLGE_BG/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/DM8AT/GLGE_BG/actions/workflows/cmake-multi-platform.yml)
 ## Building the library
 To compile the library, simply go to the directory to compile to (`bin` in the example) and run cmake with the path to the root of the project (the folder you cloned to). Then, simply run `cmake --build` to build the project and library. 
 
