@@ -5,5 +5,8 @@
 bin
 build
 
+# ignore the header only part
+headers
+
 # ignore my build script
 build.sh
