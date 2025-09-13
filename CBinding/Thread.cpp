@@ -20,7 +20,7 @@ void thread_Join(Thread* thread) {thread->join();}
 
 void thread_Detach(Thread* thread) {thread->detach();}
 
-bool thread_joinable(Thread* thread) {return thread->joinable();}
+bool thread_Joinable(Thread* thread) {return thread->joinable();}
 
 void thread_Swap(Thread* thread, Thread* other) {thread->swap(other);}
 

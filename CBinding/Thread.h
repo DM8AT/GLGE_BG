@@ -132,7 +132,7 @@ void thread_Detach(Thread* thread);
  * @return true : the thread can be joined
  * @return false : the thread cannot be joined
  */
-bool thread_joinable(Thread* thread);
+bool thread_Joinable(Thread* thread);
 
 /**
  * @brief swap two threads
