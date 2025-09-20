@@ -56,6 +56,14 @@ typedef struct s_Vector
     /**
      * @brief Construct a new Vector
      * 
+     * @param _elementSize the size for each vector element
+     * @param _elements the amount of elements to pre-allocate for
+     */
+    s_Vector(uint64_t _elementSize, uint64_t _elements) noexcept;
+
+    /**
+     * @brief Construct a new Vector
+     * 
      * @param _elementSize the size of each vector element
      * @param elements the amount of elements in the input data
      * @param data the data to initialize the data vector with
@@ -141,6 +149,14 @@ extern "C" {
  * @param _elementSize the size of each vector element
  */
 Vector* vector_Create(uint64_t _elementSize);
+
+/**
+ * @brief Construct a new Vector
+ * 
+ * @param _elementSize the size of each vector element
+ * @param _elements the amount of elements to pre-allocate for
+ */
+Vector* vector_CreatePreallocated(uint64_t _elementSize, uint64_t _elements);
 
 /**
  * @brief Construct a new Vector

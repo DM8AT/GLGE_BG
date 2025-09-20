@@ -47,6 +47,23 @@ s_Vector::s_Vector(uint64_t _elementSize) noexcept
     byteCapacity = GLGE_C_VECTOR_MIN_SIZE * elementSize;
 }
 
+s_Vector::s_Vector(uint64_t _elementSize, uint64_t _elements) noexcept
+ : byteCapacity(0), byteSize(0), ptr(nullptr), elementSize(_elementSize)
+{
+    //allocate the data array
+    ptr = (void*)(new uint8_t[_elements * elementSize]);
+
+    //if the pointer is 0, stop
+    if (!ptr)  {return;}
+
+    //store the new capacity
+    byteCapacity = _elements * elementSize;
+
+    //clear the data
+    memset(ptr, 0, byteCapacity);
+}
+
+
 s_Vector::s_Vector(uint64_t _elementSize, uint64_t _elements, void* _data) noexcept
  : byteCapacity(0), byteSize(0), ptr(nullptr), elementSize(_elementSize)
 {
@@ -176,6 +193,12 @@ Vector* vector_Create(uint64_t _elementSize)
 {
     //return a new vector
     return new Vector(_elementSize);
+}
+
+Vector* vector_CreatePreallocated(uint64_t _elementSize, uint64_t _elements)
+{
+    //return a new vector
+    return new Vector(_elementSize, _elements);
 }
 
 Vector* vector_CreateFrom(uint64_t _elementSize, uint64_t elements, void* data)
