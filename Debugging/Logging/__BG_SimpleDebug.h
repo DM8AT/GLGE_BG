@@ -26,7 +26,7 @@
 #define GLGE_MESSAGE(message) std::cout << message << "\n"
 
 //simple marking
-#define GLGE_MARKER(message) std::cout << message << " at " << __ASSERT_FUNCTION << "\n"
+#define GLGE_MARKER(message) std::cout << message << " at " << (__extension__ __PRETTY_FUNCTION__) << "\n"
 
 //simple abort method
 #define GLGE_ABORT(message) GLGE_MARKER(message); abort()
