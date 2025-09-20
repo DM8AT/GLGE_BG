@@ -26,7 +26,7 @@
 #define GLGE_MESSAGE(message) std::cout << message << "\n"
 
 //simple marking
-#define GLGE_MARKER(message) std::cout << message << " at " << __func__ << "\n"
+#define GLGE_MARKER(message) std::cout << message << " at function \"" << __func__ << "\"\n"
 
 //simple abort method
 #define GLGE_ABORT(message) GLGE_MARKER(message); abort()
@@ -43,7 +43,7 @@
 
 //simple debug marking
 #if GLGE_BG_DEBUG
-#define GLGE_DEBUG_MARKER(message) std::cout << message << " at " << __ASSERT_FUNCTION << "\n"
+#define GLGE_DEBUG_MARKER(message) GLGE_MARKER(message)
 #else
 #define GLGE_DEBUG_MARKER(message)
 #endif
