@@ -184,6 +184,24 @@ void s_Vector::clear() noexcept
     ptr = NULL;
 }
 
+void s_Vector::erase(uint64_t index)
+{
+    //just copy the rest of elements over the elements to erase
+    uint8_t* end = ((uint8_t*)ptr) + ((index + 1) * elementSize);
+    memmove(((uint8_t*)ptr) + (index * elementSize), end, byteSize - (index*elementSize));
+    //remove one element from the size
+    byteSize -= elementSize;
+}
+
+void s_Vector::erase(uint64_t index, uint64_t n)
+{
+    //just copy the rest of elements over the elements to erase
+    uint8_t* end = ((uint8_t*)ptr) + ((index + n) * elementSize);
+    memmove(((uint8_t*)ptr) + (index * elementSize), end, byteSize - ((index+n)*elementSize));
+    //remove n elements from the size
+    byteSize -= elementSize*n;
+}
+
 
 
 
@@ -230,5 +248,10 @@ void vector_Pop_back(Vector* vec) {vec->pop_back();}
 void vector_Pop_front(Vector* vec) {vec->pop_front();}
 
 void vector_Clear(Vector* vec) {vec->clear();}
+
+void vector_Erase(uint64_t index, Vector* vec) {vec->erase(index);}
+
+void vector_EraseSome(uint64_t index, uint64_t n, Vector* vec) {vec->erase(index, n);}
+
 
 }

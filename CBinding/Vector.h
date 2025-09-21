@@ -133,6 +133,21 @@ typedef struct s_Vector
      */
     void clear() noexcept;
 
+    /**
+     * @brief erase a specific element from the vector
+     * 
+     * @param index the index of the element to remove
+     */
+    void erase(uint64_t index);
+
+    /**
+     * @brief erase a specific section from the vector
+     * 
+     * @param index the index of the element to start erasing at
+     * @param n the amount of elements to erase
+     */
+    void erase(uint64_t index, uint64_t n);
+
     #endif
 
 } Vector;
@@ -240,6 +255,23 @@ void vector_Pop_front(Vector* vec);
  * @param vec a pointer to the vector to perform the operation on
  */
 void vector_Clear(Vector* vec);
+
+/**
+ * @brief erase a single element from the vector
+ * 
+ * @param index the index of the element to erase
+ * @param vec a pointer to the vector to erase the element from
+ */
+void vector_Erase(uint64_t index, Vector* vec);
+
+/**
+ * @brief erase a region of elements from the vector
+ * 
+ * @param index the index of the start of the region to erase
+ * @param n the amount of elements to erase
+ * @param vec a pointer to the vector to erase the elements from
+ */
+void vector_EraseSome(uint64_t index, uint64_t n, Vector* vec);
 
 //the the extern section in C++
 #if __cplusplus
