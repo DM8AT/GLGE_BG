@@ -186,19 +186,39 @@ void s_Vector::clear() noexcept
 
 void s_Vector::erase(uint64_t index)
 {
-    //just copy the rest of elements over the elements to erase
-    uint8_t* end = ((uint8_t*)ptr) + ((index + 1) * elementSize);
-    memmove(((uint8_t*)ptr) + (index * elementSize), end, byteSize - (index*elementSize));
-    //remove one element from the size
+    //calculate the area to erase
+    size_t eraseOffset = index * elementSize;
+    size_t nextOffset = (index + 1) * elementSize;
+
+    //calculate how many bytes to move
+    size_t bytesToMove = byteSize - nextOffset;
+    //calculate the actual destination and source pointers
+    uint8_t* dest = ((uint8_t*)ptr) + eraseOffset;
+    uint8_t* src  = ((uint8_t*)ptr) + nextOffset;
+
+    //move the data over by the 1
+    //resetting the data that is now out of bounds is not necessary, it shouldn't be accessed anyway
+    memmove(dest, src, bytesToMove);
+    //correct the size
     byteSize -= elementSize;
 }
 
 void s_Vector::erase(uint64_t index, uint64_t n)
 {
-    //just copy the rest of elements over the elements to erase
-    uint8_t* end = ((uint8_t*)ptr) + ((index + n) * elementSize);
-    memmove(((uint8_t*)ptr) + (index * elementSize), end, byteSize - ((index+n)*elementSize));
-    //remove n elements from the size
+    //calculate the area to erase
+    size_t eraseOffset = index * elementSize;
+    size_t nextOffset = (index + n) * elementSize;
+
+    //calculate how many bytes to move
+    size_t bytesToMove = byteSize - nextOffset;
+    //calculate the actual destination and source pointers
+    uint8_t* dest = ((uint8_t*)ptr) + eraseOffset;
+    uint8_t* src  = ((uint8_t*)ptr) + nextOffset;
+
+    //move the data over by the 1
+    //resetting the data that is now out of bounds is not necessary, it shouldn't be accessed anyway
+    memmove(dest, src, bytesToMove);
+    //correct the size
     byteSize -= elementSize*n;
 }
 
