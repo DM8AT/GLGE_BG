@@ -46,7 +46,7 @@ typedef struct s_Timer {
      * 
      * @return double the difference in seconds
      */
-    inline double getDeltaTime() noexcept {return std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::system_clock::now() - m_start).count() / 1000000000.;}
+    inline double getDeltaTime() noexcept {return (double)std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::system_clock::now() - m_start).count() / 1000000000.;}
 
 protected:
 

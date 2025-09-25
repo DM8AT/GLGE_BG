@@ -165,11 +165,11 @@ void string_Clear(String* str);
  * @brief insert a character or multiple characters at a specific position in the string
  * 
  * @param idx the index to start the insertion at
- * @param count the amount of characters to insert
  * @param character the character to insert
+ * @param count the amount of characters to insert
  * @param str a pointer to the string object
  */
-void string_InsertChar(uint64_t idx, uint64_t count, char character, String* str);
+void string_InsertChar(uint64_t idx, char character, uint64_t count, String* str);
 
 /**
  * @brief insert a c string at a specific index into a string object

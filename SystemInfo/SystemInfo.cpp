@@ -12,6 +12,30 @@
 //include the system info header
 #include "SystemInfo.h"
 
+//to disable -Wformat-nonliteral in a specific region
+#if defined(__GNUC__) || defined(__clang__)
+    #define __BEGIN_DISABLE_FORMAT_WARNING \
+        _Pragma("GCC diagnostic push") \
+        _Pragma("GCC diagnostic ignored \"-Wformat-nonliteral\"")
+    
+    #define __END_DISABLE_FORMAT_WARNING \
+        _Pragma("GCC diagnostic pop")
+
+#elif defined(_MSC_VER)
+    // MSVC doesn't warn on non-literal formats by default,
+    // but if you need to suppress something similar:
+    #define __BEGIN_DISABLE_FORMAT_WARNING \
+        __pragma(warning(push)) \
+        __pragma(warning(disable: 4473))  // Not exactly the same, but close
+
+    #define __END_DISABLE_FORMAT_WARNING \
+        __pragma(warning(pop))
+
+#else
+    #define __BEGIN_DISABLE_FORMAT_WARNING
+    #define __END_DISABLE_FORMAT_WARNING
+#endif
+
 //define the linux backend
 #if __linux
 
@@ -21,6 +45,8 @@
 
 //include debug stuff
 #include "../Debugging/Logging/__BG_SimpleDebug.h"
+
+__BEGIN_DISABLE_FORMAT_WARNING //-Wformat-nonliteral disabled
 
 static uint64_t __linux_util_getProcElement(const char* file, const char* name, const char* format)
 {
@@ -44,6 +70,8 @@ static uint64_t __linux_util_getProcElement(const char* file, const char* name, 
 
     return memKb * 1024;
 }
+
+__END_DISABLE_FORMAT_WARNING //-Wformat-nonliteral enabled again
 
 #endif
 
