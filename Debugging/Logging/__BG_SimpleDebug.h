@@ -22,11 +22,18 @@
 //include assertions
 #include <assert.h>
 
+//define a unified signature for the function name when compiling
+#ifdef _MSC_VER
+    #define FUNC_SIGNATURE __FUNCSIG__
+#else
+    #define FUNC_SIGNATURE __PRETTY_FUNCTION__
+#endif
+
 //simple message
 #define GLGE_MESSAGE(message) std::cout << message << "\n"
 
 //simple marking
-#define GLGE_MARKER(message) std::cout << message << " at function \"" << __func__ << "\"\n"
+#define GLGE_MARKER(message) std::cout << message << " at function \"" << FUNC_SIGNATURE << "\"\n"
 
 //simple abort method
 #define GLGE_ABORT(message) GLGE_MARKER(message); abort()
